@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>EECS 448 Lab 10 Exercise 7</title>
+    </head>
+    <body>
+        <h1>Delete User Posts</h1>
+        <br>
+        <form action="DeletePost.php" method="POST">
+	  <table>
+  		<thead>
+                    <tr>
+                        <th>ID of Post</th>
+                        <th>User's ID</th>
+                        <th>Content</th>
+                        <th>Delete All</th>
+                    </tr>
+                </thead>
+<?php
+   $connection = new mysqli("mysql.eecs.ku.edu”, "alexanderwilhelm", "Ti7NaiMa", "alexanderwilhelm");
+if ($connection->connect_errno)
+{
+    printf("Connection Failed!!\n", $connection->connect_error);
+
+    exit();
+}
+
+$test = $connection->query("SELECT * FROM Posts");
+
+if ($test == true)
+{
+
+      while ($section = $test->fetch_assoc())
+      {
+        printf($section["post_id"], $section["author_id"], $section["content"]);
+        printf("<td><input type='checkbox' name='delete[%s]', value='%s', $section["post_id"], $section['post_id']);
+      }
+    }
+    else
+    {
+     echo "Error. Could not recieve users.";
+    }
+   $connection -> close();
+   ?>
+</tbody>
+
+
+	  </table>
+          <button type="submit">Submit!</button>
+        </form>
+    </body>
+</html>
